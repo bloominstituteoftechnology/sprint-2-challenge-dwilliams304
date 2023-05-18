@@ -89,7 +89,6 @@
       //profile = object, reason = string
       let isActive = profile.active;
       let xReason = profile.reason;
-      console.log(isActive);
       if(isActive === undefined){
         return 'impossible to ascertain status';
       }else if((!isActive && xReason === undefined) || (isActive && xReason !== undefined)){
@@ -107,7 +106,7 @@
     }
 
     // 👉 CHALLENGE 2
-    function mineSweeper() {
+    function mineSweeper(grid, x, y) {
       // 🧠 mineSweeper takes a grid as its first argument, and coordinates x and y as the second and third args
       //  The grid is an array of arrays in the following format: [["🟥","🟦","🟥"],["🟦","🟥","🟥"],["🟥","🟦","🟦"]]
       //  Each subarray is a row of the grid, the first subarray being the top row:
@@ -125,10 +124,11 @@
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
+
     }
 
     // 👉 CHALLENGE 3
-    function booleanize() {
+    function booleanize(obj) {
       // 🧠 booleanize takes an object as its single argument, which can have any number of properties
       // Loop over the properties and then return the object, after applying the following transformations:
       //    * If a value is the number zero, it must be transformed into the Boolean false
@@ -137,10 +137,24 @@
       // 🧠 Edge cases:
       //    * If a property name exceeds 9 characters, return the string "shorten all prop names to 9 chars or less"
       // 🌟 HINT: careful not to perform any unintended changes on the object
+      
+      for(let key in obj){
+        let elem = obj.key;
+        if(elem === 0){
+          obj[key] === false;
+        }
+        else if(elem === 1){
+          obj[key] === true
+        }
+        else if(elem === null){
+          delete obj.key;
+          delete key;
+        }
+      }
     }
 
     // 👉 CHALLENGE 4
-    function scrub() {
+    function scrub(text, forbidden) {
       // 🧠 scrub takes a string "text" as its first argument, and an array of forbidden words "forbidden" as its second
       // Any word in the text included in the array of forbidden words is replaced with a word of equal length but made of lowcase "x"
       // The scrubbed text is then returned from the function, as seen in the examples below
@@ -152,10 +166,12 @@
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
+      let result = '';
+      return result;
     }
 
     // 👉 CHALLENGE 5
-    function normalizePhoneNumber() {
+    function normalizePhoneNumber(str) {
       // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
       // The function returns a string formatted as seen below
       // 🧠 Examples of usage:
