@@ -137,20 +137,14 @@
       // 🧠 Edge cases:
       //    * If a property name exceeds 9 characters, return the string "shorten all prop names to 9 chars or less"
       // 🌟 HINT: careful not to perform any unintended changes on the object
-      
       for(let key in obj){
-        let elem = obj.key;
-        if(elem === 0){
-          obj[key] === false;
-        }
-        else if(elem === 1){
-          obj[key] === true
-        }
-        else if(elem === null){
-          delete obj.key;
-          delete key;
-        }
+        if(obj[key] === 0){
+          obj[key] = false
+        }else if(obj[key] === 1){obj[key] = true;}
+        else if(obj[key] === null){delete obj[key]}
+        if(key > 9){return 'shorten all prop names to 9 chars or less';}
       }
+      return obj;
     }
 
     // 👉 CHALLENGE 4
