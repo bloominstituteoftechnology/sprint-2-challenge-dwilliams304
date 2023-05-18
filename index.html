@@ -124,7 +124,20 @@
       //    * If the player lands on blue, return the string "🟦 🥳"
       // 🧠 Edge cases:
       //    * If the x or y coordinates are under 1 or over 3, return the string "invalid coordinates"
-
+      if((x < 1 || x > 3) || (y < 1 || y > 3)){
+        return 'invalid coordinates';
+      }
+      yActual = y-1;
+      xActual = x-1;
+      const row = grid[yActual];
+      for(x in row){
+        if(row[xActual] === '🟥'){
+          return '🟥 💀';
+        }
+        else if(row[xActual] === '🟦'){
+          return '🟦 🥳';
+        }
+      }
     }
 
     // 👉 CHALLENGE 3
@@ -177,6 +190,16 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
+      let result = [];
+      result = str.split('');
+      if (result.length !== 10){
+        return 'type a 10-digit number'
+      }
+      for (let i in result){
+        if(result[i] === 'x'){
+          return 'invalid phone number';
+        }
+      }
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
