@@ -173,10 +173,31 @@
       //    scrub("aces high", ["high", "aces", "hearts"]) // returns "xxxx xxxx"
       //    scrub("", ["high", "aces""]) // returns ""
       // 🌟 HINT: useful array methods to use are `push`, `indexOf`, `split`, `join`
-      let result = '';
-      return result;
-    }
-
+      let words = text.split(' ');
+      const result = [];
+      //console.log(words);
+      for(let i = 0; i < words.length; i++){
+        let word = words[i];
+        let scrubbedWord = '';
+        for(let x = 0; x < forbidden.length; x++){
+          if(word === forbidden[x]){
+            let z = 0;
+            let neededLength = word.length;
+            word = '';
+            while(z < neededLength){
+              word += 'x'
+              z++;
+            }
+          }
+        }
+        result.push(word);
+      }
+      let final = result.join(' ');
+      return final;
+  
+  
+  
+}
     // 👉 CHALLENGE 5
     function normalizePhoneNumber(str) {
       // 🧠 normalizePhoneNumber takes a string as its only argument, representing a ten-digit number
@@ -190,16 +211,15 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
-      let result = [];
-      result = str.split('');
-      if (result.length !== 10){
-        return 'type a 10-digit number'
-      }
-      for (let i in result){
-        if(result[i] === 'x'){
-          return 'invalid phone number';
+      let numbersArray = str.split('');
+      let need = '(XXX) XXX-XXXX'
+      let template = need.split('');
+      if (numbersArray.length === 10){
+        for(let idx = 0; idx < numbersArray.length; idx++){
+          let currentNumber = numbersArray[idx];
         }
       }
+      else{ return 'type a 10-digit number'; }
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
