@@ -194,9 +194,6 @@
       }
       let final = result.join(' ');
       return final;
-  
-  
-  
 }
     // 👉 CHALLENGE 5
     function normalizePhoneNumber(str) {
@@ -211,15 +208,43 @@
       // 🌟 HINT: instead of looping over the number's digits, loop backwards over a template "(XXX) XXX-XXXX"
       // 🌟 HINT: at each iteration, if the current character is an "X", replace it with the result of popping a digit from the number
       // 🌟 HINT: if you'd rather loop forwards, use `shift` instead of `pop`
-      let numbersArray = str.split('');
-      let need = '(XXX) XXX-XXXX'
-      let template = need.split('');
-      if (numbersArray.length === 10){
-        for(let idx = 0; idx < numbersArray.length; idx++){
-          let currentNumber = numbersArray[idx];
-        }
+      let allNumbers = str.split('');
+      //let template = ['(', 'X', 'X', 'X', ')', ' ', 'X', 'X', 'X', '-', 'X', 'X', 'X', 'X'];
+      let test = [];
+      if(allNumbers.length  !== 10){
+        return 'type a 10-digit number';
       }
-      else{ return 'type a 10-digit number'; }
+      for(let idx = 0; idx < allNumbers.length; idx++){
+        currentNumber = allNumbers[idx];
+        if(allNumbers[idx] === 'x')
+        {
+          return 'invalid phone number';
+        }
+        test.push(currentNumber); 
+      }
+      let areaCode = test.slice(0, 3); //I was simply too dumb. So this is what I did haha.
+      let first3 = test.slice(3, 6); //Probably one of the weirder solutions but it works.
+      let last4 = test.slice(6, 10); //I need to do more research on for/while loops
+      /*
+      For a while I could get it to loop through each part of my 'template' array, but it always ended up being whatever the first number
+      I found in the allNumbers array. So when I would:
+      let result = template.join('');
+      return result
+      If the input for the function was 1234567890, it would simply become (111)111-1111
+      I knew I was getting closer to it, and I knew that it was because I was only capturing whatever was in the first index of the input
+      and then translating that into every single index of the template array, I just could not figure out how to change it.
+      I'm sure the order I put things in had an effect// maybe it was that I needed to loop through the template array, and for every 'X'
+      I found, I need to then go through the index of the allNumbers array and replace the 'X' with that.
+      I also tried the pop() and it would just return '() - '
+      and when I did shift it would just return ' '
+      Of course I was doing it wrong though, otherwise it wouldn't have done that!
+      ******WILL COME BACK TO THIS LATER, I'M NOT SATISFIED WITH HOW I SOLVED THE ISSUE, IT WAS A BIT OF A MAKESHIFT******
+      */
+
+      let x = areaCode.join('');
+      let y = first3.join('');
+      let z = last4.join('');
+      return `(${x}) ${y}-${z}`;
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
